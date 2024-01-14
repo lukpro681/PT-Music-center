@@ -5,6 +5,8 @@
 #include <QSettings>
 #include <QDebug>
 #include <QMessageBox>
+#include <random>
+#include <QMediaMetaData>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -30,10 +32,12 @@ MainWindow::MainWindow(QWidget *parent)
         ui->positionSlider->setRange(0, duration);
     });
 
-
+    connect(ui->RepeatButton, &QAbstractButton::toggled, this, &MainWindow::on_RepeatButton_toggled);
      loadSettings();
 
     connect(&settingsDialog, &Wsettings::settingsApplied, this, &MainWindow::updatePlaylist);
+
+    // connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentRowChanged(int)));
 }
 
 MainWindow::~MainWindow()
@@ -43,17 +47,29 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_playButton_clicked()
 {
+    if(state == 1){
+        qDebug("PAUSE");
+        player->pause();
+        state = 0;
+    }
+
+    else{
     qDebug("PLAY");
     if (playlist->currentIndex() < 0)
         playlist->setCurrentIndex(0);
-
+    state = 1;
         player->play();
+    ui->titleLabel->setText(ui->listWidget->currentItem()->text());
+    }
+
 }
 
 void MainWindow::on_stopButton_clicked()
 {
         qDebug("STAAAAAAWP");
-    player->stop();
+        player->stop();
+        state = 0;
+
 }
 
 void MainWindow::on_setFolderButton_clicked()
@@ -70,6 +86,8 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     qDebug("DOUBLE CLICK");
     playlist->setCurrentIndex(ui->listWidget->row(item));
     player->play();
+    state = 1;
+    onCurrentRowChanged(ui->listWidget->row(item));
 
 }
 
@@ -129,4 +147,116 @@ void MainWindow::on_refreshButton_clicked()
     qDebug("REFRESH");
     updatePlaylist();
 }
+
+
+void MainWindow::on_ShuffleButton_toggled(bool checked)
+{
+    if (checked) {
+        // Włącz tryb losowego odtwarzania
+        std::random_device rd;
+        std::mt19937 gen(rd());
+
+        // Utwórz wektor z indeksami utworów w playliście
+        QVector<int> indices(playlist->mediaCount());
+        std::iota(indices.begin(), indices.end(), 0);
+
+        // Losowo przemieszaj indeksy
+        std::shuffle(indices.begin(), indices.end(), gen);
+
+        // Zapisz oryginalny indeks
+        originalIndex = playlist->currentIndex();
+
+        // Zatrzymaj odtwarzanie aktualnej playlisty
+        player->stop();
+
+        // Utwórz nową playlistę na podstawie przemieszanych indeksów
+        QMediaPlaylist *shuffledPlaylist = new QMediaPlaylist;
+        for (int index : indices) {
+            shuffledPlaylist->addMedia(playlist->media(index));
+        }
+
+        // Rozpocznij odtwarzanie od pierwszego utworu na nowej playliście
+        player->setPlaylist(shuffledPlaylist);
+        playlist->setCurrentIndex(0);
+        player->play();
+    } else {
+        // Wyłącz tryb losowego odtwarzania
+        playlist->setPlaybackMode(QMediaPlaylist::Sequential);
+
+        // Przywróć oryginalny indeks
+        playlist->setCurrentIndex(originalIndex);
+
+        // Zatrzymaj odtwarzanie aktualnej playlisty
+        player->stop();
+
+        // Przywróć oryginalną playlistę
+        player->setPlaylist(playlist);
+
+        // Rozpocznij odtwarzanie od oryginalnego indeksu
+        playlist->setCurrentIndex(originalIndex);
+        player->play();
+    }
+}
+
+
+void MainWindow::on_RepeatButton_toggled(bool checked)
+{
+    if (checked) {
+        // Włącz tryb powtarzania
+        if (ui->ShuffleButton->isChecked()) {
+            // Jeśli shuffle jest włączony, ustaw tryb na Loop
+            playlist->setPlaybackMode(QMediaPlaylist::Loop);
+        } else {
+            // W przeciwnym razie ustaw tryb na CurrentItemInLoop
+            playlist->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
+        }
+    } else {
+        // Wyłącz tryb powtarzania
+        if (ui->ShuffleButton->isChecked()) {
+            // Jeśli shuffle jest włączony, ustaw tryb na Random
+            playlist->setPlaybackMode(QMediaPlaylist::Random);
+        } else {
+            // W przeciwnym razie ustaw tryb na Sequential
+            playlist->setPlaybackMode(QMediaPlaylist::Sequential);
+        }
+    }
+}
+
+
+void MainWindow::on_NextButton_clicked()
+{
+    int nextIndex = playlist->nextIndex();
+
+    if (nextIndex != -1) {
+        // Odtwarzaj następny plik
+        playlist->setCurrentIndex(nextIndex);
+        player->play();
+        onCurrentRowChanged(ui->listWidget->);
+    }
+}
+
+
+void MainWindow::on_PrevButton_clicked()
+{
+    int prevIndex = playlist->previousIndex();
+
+    if (prevIndex != -1) {
+        // Odtwarzaj następny plik
+        playlist->setCurrentIndex(prevIndex);
+        player->play();
+
+    }
+}
+
+void MainWindow::onCurrentRowChanged(int currentRow)
+{
+        if (currentRow >= 0 && currentRow < ui->listWidget->count()) {
+            // Pobierz nazwę odtwarzanego pliku
+            QString fileName = ui->listWidget->item(currentRow)->text();
+
+            // Wyświetl nazwę pliku w kontrolce label
+            ui->titleLabel->setText(fileName);
+        }
+}
+
 

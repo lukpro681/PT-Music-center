@@ -119,7 +119,7 @@
      <string>Next</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="ShuffleButton">
+   <widget class="QRadioButton" name="ShuffleButton">
     <property name="geometry">
      <rect>
       <x>160</x>
@@ -132,7 +132,7 @@
      <string>Shuffle</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="RepeatButton">
+   <widget class="QCheckBox" name="RepeatButton">
     <property name="geometry">
      <rect>
       <x>610</x>
@@ -143,6 +143,19 @@
     </property>
     <property name="text">
      <string>Repeat</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLabel">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>510</y>
+      <width>501</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>lbl</string>
     </property>
    </widget>
   </widget>

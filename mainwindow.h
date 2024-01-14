@@ -28,6 +28,8 @@ public:
     void updatePlaylist();
     void defaultsort();
 
+    bool state;
+
 private slots:
     void on_playButton_clicked();
     void on_stopButton_clicked();
@@ -38,6 +40,16 @@ private slots:
 
     void on_refreshButton_clicked();
 
+    void on_ShuffleButton_toggled(bool checked);
+
+    void on_RepeatButton_toggled(bool checked);
+
+    void on_NextButton_clicked();
+
+    void on_PrevButton_clicked();
+
+    void onCurrentRowChanged(int currentRow);
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;
@@ -46,7 +58,8 @@ private:
 
     QStringList supportedFormats = settingsDialog.getFormats();
 
-
+    QMediaPlaylist *originalPlaylist;  // Przechowuje oryginalną playlistę
+    int originalIndex;
 
 };
 

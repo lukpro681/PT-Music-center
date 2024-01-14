@@ -301,7 +301,7 @@ debug/moc_mainwindow.cpp: mainwindow.h \
 		../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		debug/moc_predefs.h \
 		../../Qt/5.15.2/mingw81_64/bin/moc.exe
-	D:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include D:/REPOS/MusicCenter/debug/moc_predefs.h -ID:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -ID:/REPOS/MusicCenter -ID:/Qt/5.15.2/mingw81_64/include -ID:/Qt/5.15.2/mingw81_64/include/QtMultimedia -ID:/Qt/5.15.2/mingw81_64/include/QtWidgets -ID:/Qt/5.15.2/mingw81_64/include/QtGui -ID:/Qt/5.15.2/mingw81_64/include/QtANGLE -ID:/Qt/5.15.2/mingw81_64/include/QtNetwork -ID:/Qt/5.15.2/mingw81_64/include/QtCore -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -ID:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
+	D:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include D:/DevHomeRepos/PT-Music-center/debug/moc_predefs.h -ID:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -ID:/DevHomeRepos/PT-Music-center -ID:/Qt/5.15.2/mingw81_64/include -ID:/Qt/5.15.2/mingw81_64/include/QtMultimedia -ID:/Qt/5.15.2/mingw81_64/include/QtWidgets -ID:/Qt/5.15.2/mingw81_64/include/QtGui -ID:/Qt/5.15.2/mingw81_64/include/QtANGLE -ID:/Qt/5.15.2/mingw81_64/include/QtNetwork -ID:/Qt/5.15.2/mingw81_64/include/QtCore -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -ID:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include mainwindow.h -o debug\moc_mainwindow.cpp
 
 debug/moc_wsettings.cpp: wsettings.h \
 		../../Qt/5.15.2/mingw81_64/include/QtWidgets/QDialog \
@@ -423,7 +423,7 @@ debug/moc_wsettings.cpp: wsettings.h \
 		../../Qt/5.15.2/mingw81_64/include/QtCore/QStringList \
 		debug/moc_predefs.h \
 		../../Qt/5.15.2/mingw81_64/bin/moc.exe
-	D:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include D:/REPOS/MusicCenter/debug/moc_predefs.h -ID:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -ID:/REPOS/MusicCenter -ID:/Qt/5.15.2/mingw81_64/include -ID:/Qt/5.15.2/mingw81_64/include/QtMultimedia -ID:/Qt/5.15.2/mingw81_64/include/QtWidgets -ID:/Qt/5.15.2/mingw81_64/include/QtGui -ID:/Qt/5.15.2/mingw81_64/include/QtANGLE -ID:/Qt/5.15.2/mingw81_64/include/QtNetwork -ID:/Qt/5.15.2/mingw81_64/include/QtCore -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -ID:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include wsettings.h -o debug\moc_wsettings.cpp
+	D:\Qt\5.15.2\mingw81_64\bin\moc.exe $(DEFINES) --include D:/DevHomeRepos/PT-Music-center/debug/moc_predefs.h -ID:/Qt/5.15.2/mingw81_64/mkspecs/win32-g++ -ID:/DevHomeRepos/PT-Music-center -ID:/Qt/5.15.2/mingw81_64/include -ID:/Qt/5.15.2/mingw81_64/include/QtMultimedia -ID:/Qt/5.15.2/mingw81_64/include/QtWidgets -ID:/Qt/5.15.2/mingw81_64/include/QtGui -ID:/Qt/5.15.2/mingw81_64/include/QtANGLE -ID:/Qt/5.15.2/mingw81_64/include/QtNetwork -ID:/Qt/5.15.2/mingw81_64/include/QtCore -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -ID:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -ID:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include wsettings.h -o debug\moc_wsettings.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -959,9 +959,11 @@ debug/wsettings.o: wsettings.cpp wsettings.h \
 		../../Qt/5.15.2/mingw81_64/include/QtWidgets/qdesktopwidget.h \
 		../../Qt/5.15.2/mingw81_64/include/QtGui/qguiapplication.h \
 		../../Qt/5.15.2/mingw81_64/include/QtGui/qinputmethod.h \
+		../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLabel \
+		../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlabel.h \
+		../../Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		../../Qt/5.15.2/mingw81_64/include/QtWidgets/QLineEdit \
 		../../Qt/5.15.2/mingw81_64/include/QtWidgets/qlineedit.h \
-		../../Qt/5.15.2/mingw81_64/include/QtWidgets/qframe.h \
 		../../Qt/5.15.2/mingw81_64/include/QtGui/qtextcursor.h \
 		../../Qt/5.15.2/mingw81_64/include/QtGui/qtextformat.h \
 		../../Qt/5.15.2/mingw81_64/include/QtGui/qpen.h \
