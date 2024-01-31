@@ -32,6 +32,7 @@ class Ui_MainWindow
 public:
     QAction *actionSettings;
     QAction *actionAbout;
+    QAction *action_wav_to_mp3;
     QWidget *centralwidget;
     QListWidget *listWidget;
     QSlider *positionSlider;
@@ -46,6 +47,7 @@ public:
     QLabel *titleLabel;
     QMenuBar *menubar;
     QMenu *menuGeneral;
+    QMenu *menuConvert;
     QStatusBar *statusbar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -60,6 +62,8 @@ public:
         actionSettings->setObjectName(QString::fromUtf8("actionSettings"));
         actionAbout = new QAction(MainWindow);
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
+        action_wav_to_mp3 = new QAction(MainWindow);
+        action_wav_to_mp3->setObjectName(QString::fromUtf8("action_wav_to_mp3"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         listWidget = new QListWidget(centralwidget);
@@ -102,14 +106,18 @@ public:
         menubar->setGeometry(QRect(0, 0, 800, 21));
         menuGeneral = new QMenu(menubar);
         menuGeneral->setObjectName(QString::fromUtf8("menuGeneral"));
+        menuConvert = new QMenu(menubar);
+        menuConvert->setObjectName(QString::fromUtf8("menuConvert"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
         MainWindow->setStatusBar(statusbar);
 
         menubar->addAction(menuGeneral->menuAction());
+        menubar->addAction(menuConvert->menuAction());
         menuGeneral->addAction(actionSettings);
         menuGeneral->addAction(actionAbout);
+        menuConvert->addAction(action_wav_to_mp3);
 
         retranslateUi(MainWindow);
 
@@ -121,6 +129,7 @@ public:
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
         actionSettings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
+        action_wav_to_mp3->setText(QCoreApplication::translate("MainWindow", ".wav to .mp3", nullptr));
         playButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
         stopButton->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
         setFolderButton->setText(QCoreApplication::translate("MainWindow", "Add Folder(s)", nullptr));
@@ -131,6 +140,7 @@ public:
         RepeatButton->setText(QCoreApplication::translate("MainWindow", "Repeat", nullptr));
         titleLabel->setText(QCoreApplication::translate("MainWindow", "lbl", nullptr));
         menuGeneral->setTitle(QCoreApplication::translate("MainWindow", "General", nullptr));
+        menuConvert->setTitle(QCoreApplication::translate("MainWindow", "Convert", nullptr));
     } // retranslateUi
 
 };

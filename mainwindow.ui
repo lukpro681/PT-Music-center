@@ -175,7 +175,14 @@
     <addaction name="actionSettings"/>
     <addaction name="actionAbout"/>
    </widget>
+   <widget class="QMenu" name="menuConvert">
+    <property name="title">
+     <string>Convert</string>
+    </property>
+    <addaction name="action_wav_to_mp3"/>
+   </widget>
    <addaction name="menuGeneral"/>
+   <addaction name="menuConvert"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionSettings">
@@ -186,6 +193,11 @@
   <action name="actionAbout">
    <property name="text">
     <string>About</string>
+   </property>
+  </action>
+  <action name="action_wav_to_mp3">
+   <property name="text">
+    <string>.wav to .mp3</string>
    </property>
   </action>
  </widget>

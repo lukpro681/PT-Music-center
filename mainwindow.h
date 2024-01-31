@@ -50,6 +50,8 @@ private slots:
 
     void onCurrentRowChanged(int currentRow);
 
+    void on_action_wav_to_mp3_triggered();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;

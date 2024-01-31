@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[19];
-    char stringdata0[361];
+    QByteArrayData data[20];
+    char stringdata0[392];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -50,7 +50,8 @@ QT_MOC_LITERAL(14, 262, 23), // "on_RepeatButton_toggled"
 QT_MOC_LITERAL(15, 286, 21), // "on_NextButton_clicked"
 QT_MOC_LITERAL(16, 308, 21), // "on_PrevButton_clicked"
 QT_MOC_LITERAL(17, 330, 19), // "onCurrentRowChanged"
-QT_MOC_LITERAL(18, 350, 10) // "currentRow"
+QT_MOC_LITERAL(18, 350, 10), // "currentRow"
+QT_MOC_LITERAL(19, 361, 30) // "on_action_wav_to_mp3_triggered"
 
     },
     "MainWindow\0on_playButton_clicked\0\0"
@@ -63,7 +64,7 @@ QT_MOC_LITERAL(18, 350, 10) // "currentRow"
     "on_ShuffleButton_toggled\0checked\0"
     "on_RepeatButton_toggled\0on_NextButton_clicked\0"
     "on_PrevButton_clicked\0onCurrentRowChanged\0"
-    "currentRow"
+    "currentRow\0on_action_wav_to_mp3_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -73,7 +74,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      12,   14, // methods
+      13,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -81,18 +82,19 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   74,    2, 0x08 /* Private */,
-       3,    0,   75,    2, 0x08 /* Private */,
-       4,    0,   76,    2, 0x08 /* Private */,
-       5,    1,   77,    2, 0x08 /* Private */,
-       8,    1,   80,    2, 0x08 /* Private */,
-      10,    0,   83,    2, 0x08 /* Private */,
-      11,    0,   84,    2, 0x08 /* Private */,
-      12,    1,   85,    2, 0x08 /* Private */,
-      14,    1,   88,    2, 0x08 /* Private */,
-      15,    0,   91,    2, 0x08 /* Private */,
-      16,    0,   92,    2, 0x08 /* Private */,
-      17,    1,   93,    2, 0x08 /* Private */,
+       1,    0,   79,    2, 0x08 /* Private */,
+       3,    0,   80,    2, 0x08 /* Private */,
+       4,    0,   81,    2, 0x08 /* Private */,
+       5,    1,   82,    2, 0x08 /* Private */,
+       8,    1,   85,    2, 0x08 /* Private */,
+      10,    0,   88,    2, 0x08 /* Private */,
+      11,    0,   89,    2, 0x08 /* Private */,
+      12,    1,   90,    2, 0x08 /* Private */,
+      14,    1,   93,    2, 0x08 /* Private */,
+      15,    0,   96,    2, 0x08 /* Private */,
+      16,    0,   97,    2, 0x08 /* Private */,
+      17,    1,   98,    2, 0x08 /* Private */,
+      19,    0,  101,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -107,6 +109,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -129,6 +132,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 9: _t->on_NextButton_clicked(); break;
         case 10: _t->on_PrevButton_clicked(); break;
         case 11: _t->onCurrentRowChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 12: _t->on_action_wav_to_mp3_triggered(); break;
         default: ;
         }
     }
@@ -163,13 +167,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 12)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 12;
+        _id -= 13;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 12)
+        if (_id < 13)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 12;
+        _id -= 13;
     }
     return _id;
 }

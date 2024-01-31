@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     a.setApplicationDisplayName("Music Center");
     a.setApplicationName("Music Center");
-    a.setApplicationVersion("0.0.1");
+    a.setApplicationVersion("0.1.1");
     a.setWindowIcon(QIcon("music.icon"));
 
 

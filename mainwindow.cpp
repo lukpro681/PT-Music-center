@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "wsettings.h"
+#include "converter.h"
 #include <QSettings>
 #include <QDebug>
 #include <QMessageBox>
@@ -37,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(&settingsDialog, &Wsettings::settingsApplied, this, &MainWindow::updatePlaylist);
 
-    // connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentRowChanged(int)));
+    connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentRowChanged(int)));
 }
 
 MainWindow::~MainWindow()
@@ -88,6 +89,7 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     player->play();
     state = 1;
     onCurrentRowChanged(ui->listWidget->row(item));
+
 
 }
 
@@ -152,34 +154,39 @@ void MainWindow::on_refreshButton_clicked()
 void MainWindow::on_ShuffleButton_toggled(bool checked)
 {
     if (checked) {
-        // Włącz tryb losowego odtwarzania
-        std::random_device rd;
-        std::mt19937 gen(rd());
+//        // Włącz tryb losowego odtwarzania
+//        std::random_device rd;
+//        std::mt19937 gen(rd());
 
-        // Utwórz wektor z indeksami utworów w playliście
-        QVector<int> indices(playlist->mediaCount());
-        std::iota(indices.begin(), indices.end(), 0);
+//        // Utwórz wektor z indeksami utworów w playliście
+//        QVector<int> indices(playlist->mediaCount());
+//        std::iota(indices.begin(), indices.end(), 0);
 
-        // Losowo przemieszaj indeksy
-        std::shuffle(indices.begin(), indices.end(), gen);
+//        // Losowo przemieszaj indeksy
+//        std::shuffle(indices.begin(), indices.end(), gen);
 
-        // Zapisz oryginalny indeks
-        originalIndex = playlist->currentIndex();
+//        // Zapisz oryginalny indeks
+//        originalIndex = playlist->currentIndex();
 
-        // Zatrzymaj odtwarzanie aktualnej playlisty
-        player->stop();
+//        // Zatrzymaj odtwarzanie aktualnej playlisty
+//        player->stop();
 
-        // Utwórz nową playlistę na podstawie przemieszanych indeksów
-        QMediaPlaylist *shuffledPlaylist = new QMediaPlaylist;
-        for (int index : indices) {
-            shuffledPlaylist->addMedia(playlist->media(index));
-        }
+//        // Utwórz nową playlistę na podstawie przemieszanych indeksów
+//        QMediaPlaylist *shuffledPlaylist = new QMediaPlaylist;
+//        for (int index : indices) {
+//            shuffledPlaylist->addMedia(playlist->media(index));
+//        }
 
-        // Rozpocznij odtwarzanie od pierwszego utworu na nowej playliście
-        player->setPlaylist(shuffledPlaylist);
-        playlist->setCurrentIndex(0);
-        player->play();
+//        // Rozpocznij odtwarzanie od pierwszego utworu na nowej playliście
+//        player->setPlaylist(shuffledPlaylist);
+//        //playlist->setCurrentIndex(0);
+//        ui->titleLabel->setText(ui->listWidget->item(shuffledPlaylist->currentIndex())->text());
+//        player->play();
+
+        playlist->shuffle();
+
     } else {
+
         // Wyłącz tryb losowego odtwarzania
         playlist->setPlaybackMode(QMediaPlaylist::Sequential);
 
@@ -194,7 +201,8 @@ void MainWindow::on_ShuffleButton_toggled(bool checked)
 
         // Rozpocznij odtwarzanie od oryginalnego indeksu
         playlist->setCurrentIndex(originalIndex);
-        player->play();
+      //  playlist->setCurrentIndex(0);
+       // player->play();
     }
 }
 
@@ -230,8 +238,9 @@ void MainWindow::on_NextButton_clicked()
     if (nextIndex != -1) {
         // Odtwarzaj następny plik
         playlist->setCurrentIndex(nextIndex);
+        ui->titleLabel->setText(ui->listWidget->item(nextIndex)->text());
         player->play();
-        onCurrentRowChanged(ui->listWidget->);
+
     }
 }
 
@@ -259,4 +268,14 @@ void MainWindow::onCurrentRowChanged(int currentRow)
         }
 }
 
+
+
+void MainWindow::on_action_wav_to_mp3_triggered()
+{
+        qDebug("Opening Converter");
+        Converter *newconverter = new Converter(this);
+        newconverter->setWindowIcon(QIcon("music.ico"));
+        newconverter->setWindowTitle("Music Files Converter");
+        newconverter->show();
+}
 
