@@ -21,6 +21,8 @@ private slots:
     void on_convertButton_clicked();
     void on_addFileButton_clicked();
 
+    void on_cancelButton_clicked();
+
 private:
     Ui::Converter *ui;
 };

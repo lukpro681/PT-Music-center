@@ -9,24 +9,33 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    about.cpp \
     converter.cpp \
+    converterwavogg.cpp \
     main.cpp \
     mainwindow.cpp \
     wsettings.cpp
 
 HEADERS += \
+    about.h \
     converter.h \
+    converterwavogg.h \
     mainwindow.h \
     wsettings.h
 
 FORMS += \
+    about.ui \
     converter.ui \
+    converterwavogg.ui \
     mainwindow.ui \
     wsettings.ui
 
 
 INCLUDEPATH += $$PWD/lib/include
-LIBS += -L$$PWD/lib/lib -lmp3lame
+LIBS += -L$$PWD/lib/lib
+
+INCLUDEPATH += $$PWD/ogglib/include
+LIBS += -L$$PWD/ogglib/lib
 
 TRANSLATIONS += \
     MusicCenter_pl_PL.ts

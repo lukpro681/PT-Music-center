@@ -52,6 +52,12 @@ private slots:
 
     void on_action_wav_to_mp3_triggered();
 
+    void on_listWidget_itemClicked(QListWidgetItem *item);
+
+    void on_actionAbout_triggered();
+
+    void on_action_wav_to_ogg_triggered();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;

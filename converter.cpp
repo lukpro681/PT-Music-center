@@ -55,3 +55,9 @@ void Converter::on_addFileButton_clicked()
         ui->fileTextEdit->setText(filePath);
     }
 }
+
+void Converter::on_cancelButton_clicked()
+{
+    this->close();
+}
+

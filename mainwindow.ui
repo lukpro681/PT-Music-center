@@ -44,8 +44,8 @@
    <widget class="QPushButton" name="playButton">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>440</y>
+      <x>330</x>
+      <y>460</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -57,8 +57,8 @@
    <widget class="QPushButton" name="stopButton">
     <property name="geometry">
      <rect>
-      <x>520</x>
-      <y>440</y>
+      <x>510</x>
+      <y>460</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -96,8 +96,8 @@
    <widget class="QPushButton" name="PrevButton">
     <property name="geometry">
      <rect>
-      <x>250</x>
-      <y>440</y>
+      <x>240</x>
+      <y>460</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -109,8 +109,8 @@
    <widget class="QPushButton" name="NextButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>440</y>
+      <x>420</x>
+      <y>460</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -122,8 +122,8 @@
    <widget class="QRadioButton" name="ShuffleButton">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>440</y>
+      <x>150</x>
+      <y>460</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -135,8 +135,8 @@
    <widget class="QCheckBox" name="RepeatButton">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>440</y>
+      <x>600</x>
+      <y>460</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -148,14 +148,59 @@
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
-      <x>120</x>
+      <x>130</x>
       <y>510</y>
       <width>501</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>lbl</string>
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="selectedTitleLabel">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>420</y>
+      <width>501</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="infoLabelSelected">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>420</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Selected title:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="infoLabelPlaying">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>510</y>
+      <width>121</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Playing:</string>
     </property>
    </widget>
   </widget>
@@ -180,6 +225,8 @@
      <string>Convert</string>
     </property>
     <addaction name="action_wav_to_mp3"/>
+    <addaction name="action_wav_to_ogg"/>
+    <addaction name="action_mp3_to_ogg"/>
    </widget>
    <addaction name="menuGeneral"/>
    <addaction name="menuConvert"/>
@@ -198,6 +245,16 @@
   <action name="action_wav_to_mp3">
    <property name="text">
     <string>.wav to .mp3</string>
+   </property>
+  </action>
+  <action name="action_wav_to_ogg">
+   <property name="text">
+    <string>.wav to .ogg</string>
+   </property>
+  </action>
+  <action name="action_mp3_to_ogg">
+   <property name="text">
+    <string>.mp3 to .ogg</string>
    </property>
   </action>
  </widget>

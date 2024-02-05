@@ -1,16 +1,18 @@
-#pragma once
 /********************************************************************************
-** Form generated from reading UI file ''
+** Form generated from reading UI file 'converter.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
+#ifndef UI_CONVERTER_H
+#define UI_CONVERTER_H
+
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
-#include <QtWidgets/QLabel>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTextEdit>
 
@@ -19,28 +21,41 @@ QT_BEGIN_NAMESPACE
 class Ui_Converter
 {
 public:
-    QLabel *infoLabel;
-    QTextEdit *fileTextEdit;
-    QPushButton *convertButton;
+    QGridLayout *gridLayout;
     QPushButton *addFileButton;
+    QTextEdit *fileTextEdit;
+    QPushButton *cancelButton;
+    QPushButton *convertButton;
 
     void setupUi(QDialog *Converter)
     {
         if (Converter->objectName().isEmpty())
             Converter->setObjectName(QString::fromUtf8("Converter"));
-        Converter->resize(624, 400);
-        infoLabel = new QLabel(Converter);
-        infoLabel->setObjectName(QString::fromUtf8("infoLabel"));
-        infoLabel->setGeometry(QRect(50, 60, 251, 16));
-        fileTextEdit = new QTextEdit(Converter);
-        fileTextEdit->setObjectName(QString::fromUtf8("cileTextEdit"));
-        fileTextEdit->setGeometry(QRect(30, 120, 281, 31));
-        convertButton = new QPushButton(Converter);
-        convertButton->setObjectName(QString::fromUtf8("convertButton"));
-        convertButton->setGeometry(QRect(230, 160, 80, 24));
+        Converter->resize(343, 148);
+        Converter->setMinimumSize(QSize(343, 148));
+        Converter->setMaximumSize(QSize(343, 148));
+        gridLayout = new QGridLayout(Converter);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         addFileButton = new QPushButton(Converter);
         addFileButton->setObjectName(QString::fromUtf8("addFileButton"));
-        addFileButton->setGeometry(QRect(30, 160, 80, 24));
+
+        gridLayout->addWidget(addFileButton, 0, 0, 1, 2);
+
+        fileTextEdit = new QTextEdit(Converter);
+        fileTextEdit->setObjectName(QString::fromUtf8("fileTextEdit"));
+
+        gridLayout->addWidget(fileTextEdit, 1, 0, 1, 2);
+
+        cancelButton = new QPushButton(Converter);
+        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+
+        gridLayout->addWidget(cancelButton, 2, 0, 1, 1);
+
+        convertButton = new QPushButton(Converter);
+        convertButton->setObjectName(QString::fromUtf8("convertButton"));
+
+        gridLayout->addWidget(convertButton, 2, 1, 1, 1);
+
 
         retranslateUi(Converter);
 
@@ -50,9 +65,9 @@ public:
     void retranslateUi(QDialog *Converter)
     {
         Converter->setWindowTitle(QCoreApplication::translate("Converter", "Dialog", nullptr));
-        infoLabel->setText(QCoreApplication::translate("Converter", "TextLabel", nullptr));
-        convertButton->setText(QCoreApplication::translate("Converter", "Convert", nullptr));
-        addFileButton->setText(QCoreApplication::translate("Converter", "Add File", nullptr));
+        addFileButton->setText(QCoreApplication::translate("Converter", "Choose .wav file", nullptr));
+        cancelButton->setText(QCoreApplication::translate("Converter", "Cancel", nullptr));
+        convertButton->setText(QCoreApplication::translate("Converter", "Convert to .mp3", nullptr));
     } // retranslateUi
 
 };
@@ -63,3 +78,4 @@ namespace Ui {
 
 QT_END_NAMESPACE
 
+#endif // UI_CONVERTER_H

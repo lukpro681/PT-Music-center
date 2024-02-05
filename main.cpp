@@ -5,13 +5,22 @@
 #include <QTranslator>
 #include <QIcon>
 
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    QString authors = "Łukasz Prokop, Wojciech Tworek";
+
+    QString disclaimer = "This program is open-source and available for everyone under the GNU General Public License";
+
+
     a.setApplicationDisplayName("Music Center");
     a.setApplicationName("Music Center");
     a.setApplicationVersion("0.1.1");
     a.setWindowIcon(QIcon("music.icon"));
+    a.setProperty("Authors", authors);
+    a.setProperty("Disclaimer", disclaimer);
 
 
     QTranslator translator;

@@ -33,6 +33,8 @@ public:
     QAction *actionSettings;
     QAction *actionAbout;
     QAction *action_wav_to_mp3;
+    QAction *action_wav_to_ogg;
+    QAction *action_mp3_to_ogg;
     QWidget *centralwidget;
     QListWidget *listWidget;
     QSlider *positionSlider;
@@ -45,6 +47,9 @@ public:
     QRadioButton *ShuffleButton;
     QCheckBox *RepeatButton;
     QLabel *titleLabel;
+    QLabel *selectedTitleLabel;
+    QLabel *infoLabelSelected;
+    QLabel *infoLabelPlaying;
     QMenuBar *menubar;
     QMenu *menuGeneral;
     QMenu *menuConvert;
@@ -64,6 +69,10 @@ public:
         actionAbout->setObjectName(QString::fromUtf8("actionAbout"));
         action_wav_to_mp3 = new QAction(MainWindow);
         action_wav_to_mp3->setObjectName(QString::fromUtf8("action_wav_to_mp3"));
+        action_wav_to_ogg = new QAction(MainWindow);
+        action_wav_to_ogg->setObjectName(QString::fromUtf8("action_wav_to_ogg"));
+        action_mp3_to_ogg = new QAction(MainWindow);
+        action_mp3_to_ogg->setObjectName(QString::fromUtf8("action_mp3_to_ogg"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         listWidget = new QListWidget(centralwidget);
@@ -75,10 +84,10 @@ public:
         positionSlider->setOrientation(Qt::Horizontal);
         playButton = new QPushButton(centralwidget);
         playButton->setObjectName(QString::fromUtf8("playButton"));
-        playButton->setGeometry(QRect(340, 440, 80, 24));
+        playButton->setGeometry(QRect(330, 460, 80, 24));
         stopButton = new QPushButton(centralwidget);
         stopButton->setObjectName(QString::fromUtf8("stopButton"));
-        stopButton->setGeometry(QRect(520, 440, 80, 24));
+        stopButton->setGeometry(QRect(510, 460, 80, 24));
         setFolderButton = new QPushButton(centralwidget);
         setFolderButton->setObjectName(QString::fromUtf8("setFolderButton"));
         setFolderButton->setGeometry(QRect(670, 30, 91, 24));
@@ -87,19 +96,30 @@ public:
         refreshButton->setGeometry(QRect(670, 60, 91, 24));
         PrevButton = new QPushButton(centralwidget);
         PrevButton->setObjectName(QString::fromUtf8("PrevButton"));
-        PrevButton->setGeometry(QRect(250, 440, 80, 24));
+        PrevButton->setGeometry(QRect(240, 460, 80, 24));
         NextButton = new QPushButton(centralwidget);
         NextButton->setObjectName(QString::fromUtf8("NextButton"));
-        NextButton->setGeometry(QRect(430, 440, 80, 24));
+        NextButton->setGeometry(QRect(420, 460, 80, 24));
         ShuffleButton = new QRadioButton(centralwidget);
         ShuffleButton->setObjectName(QString::fromUtf8("ShuffleButton"));
-        ShuffleButton->setGeometry(QRect(160, 440, 80, 24));
+        ShuffleButton->setGeometry(QRect(150, 460, 80, 24));
         RepeatButton = new QCheckBox(centralwidget);
         RepeatButton->setObjectName(QString::fromUtf8("RepeatButton"));
-        RepeatButton->setGeometry(QRect(610, 440, 80, 24));
+        RepeatButton->setGeometry(QRect(600, 460, 80, 24));
         titleLabel = new QLabel(centralwidget);
         titleLabel->setObjectName(QString::fromUtf8("titleLabel"));
-        titleLabel->setGeometry(QRect(120, 510, 501, 20));
+        titleLabel->setGeometry(QRect(130, 510, 501, 20));
+        titleLabel->setAlignment(Qt::AlignCenter);
+        selectedTitleLabel = new QLabel(centralwidget);
+        selectedTitleLabel->setObjectName(QString::fromUtf8("selectedTitleLabel"));
+        selectedTitleLabel->setGeometry(QRect(100, 420, 501, 20));
+        selectedTitleLabel->setAlignment(Qt::AlignCenter);
+        infoLabelSelected = new QLabel(centralwidget);
+        infoLabelSelected->setObjectName(QString::fromUtf8("infoLabelSelected"));
+        infoLabelSelected->setGeometry(QRect(30, 420, 121, 16));
+        infoLabelPlaying = new QLabel(centralwidget);
+        infoLabelPlaying->setObjectName(QString::fromUtf8("infoLabelPlaying"));
+        infoLabelPlaying->setGeometry(QRect(50, 510, 121, 16));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -118,6 +138,8 @@ public:
         menuGeneral->addAction(actionSettings);
         menuGeneral->addAction(actionAbout);
         menuConvert->addAction(action_wav_to_mp3);
+        menuConvert->addAction(action_wav_to_ogg);
+        menuConvert->addAction(action_mp3_to_ogg);
 
         retranslateUi(MainWindow);
 
@@ -130,6 +152,8 @@ public:
         actionSettings->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         action_wav_to_mp3->setText(QCoreApplication::translate("MainWindow", ".wav to .mp3", nullptr));
+        action_wav_to_ogg->setText(QCoreApplication::translate("MainWindow", ".wav to .ogg", nullptr));
+        action_mp3_to_ogg->setText(QCoreApplication::translate("MainWindow", ".mp3 to .ogg", nullptr));
         playButton->setText(QCoreApplication::translate("MainWindow", "Play", nullptr));
         stopButton->setText(QCoreApplication::translate("MainWindow", "Stop", nullptr));
         setFolderButton->setText(QCoreApplication::translate("MainWindow", "Add Folder(s)", nullptr));
@@ -138,7 +162,10 @@ public:
         NextButton->setText(QCoreApplication::translate("MainWindow", "Next", nullptr));
         ShuffleButton->setText(QCoreApplication::translate("MainWindow", "Shuffle", nullptr));
         RepeatButton->setText(QCoreApplication::translate("MainWindow", "Repeat", nullptr));
-        titleLabel->setText(QCoreApplication::translate("MainWindow", "lbl", nullptr));
+        titleLabel->setText(QString());
+        selectedTitleLabel->setText(QString());
+        infoLabelSelected->setText(QCoreApplication::translate("MainWindow", "Selected title:", nullptr));
+        infoLabelPlaying->setText(QCoreApplication::translate("MainWindow", "Playing:", nullptr));
         menuGeneral->setTitle(QCoreApplication::translate("MainWindow", "General", nullptr));
         menuConvert->setTitle(QCoreApplication::translate("MainWindow", "Convert", nullptr));
     } // retranslateUi

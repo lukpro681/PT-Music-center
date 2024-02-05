@@ -3,10 +3,11 @@
 #include "ui_mainwindow.h"
 #include "wsettings.h"
 #include "converter.h"
+#include "converterwavogg.h"
+#include "about.h"
 #include <QSettings>
 #include <QDebug>
 #include <QMessageBox>
-#include <random>
 #include <QMediaMetaData>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -56,8 +57,11 @@ void MainWindow::on_playButton_clicked()
 
     else{
     qDebug("PLAY");
-    if (playlist->currentIndex() < 0)
-        playlist->setCurrentIndex(0);
+        if (playlist->currentIndex() < 0) {
+        playlist->setCurrentIndex(0); }
+        else {
+            playlist->setCurrentIndex(ui->listWidget->currentRow());
+        }
     state = 1;
         player->play();
     ui->titleLabel->setText(ui->listWidget->currentItem()->text());
@@ -68,6 +72,7 @@ void MainWindow::on_playButton_clicked()
 void MainWindow::on_stopButton_clicked()
 {
         qDebug("STAAAAAAWP");
+        ui->titleLabel->clear();
         player->stop();
         state = 0;
 
@@ -86,6 +91,7 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     qDebug("DOUBLE CLICK");
     playlist->setCurrentIndex(ui->listWidget->row(item));
+    ui->titleLabel->setText(ui->listWidget->item(playlist->currentIndex())->text());
     player->play();
     state = 1;
     onCurrentRowChanged(ui->listWidget->row(item));
@@ -252,6 +258,7 @@ void MainWindow::on_PrevButton_clicked()
     if (prevIndex != -1) {
         // Odtwarzaj następny plik
         playlist->setCurrentIndex(prevIndex);
+        ui->titleLabel->setText(ui->listWidget->item(prevIndex)->text());
         player->play();
 
     }
@@ -264,7 +271,7 @@ void MainWindow::onCurrentRowChanged(int currentRow)
             QString fileName = ui->listWidget->item(currentRow)->text();
 
             // Wyświetl nazwę pliku w kontrolce label
-            ui->titleLabel->setText(fileName);
+           // ui->titleLabel->setText(fileName);
         }
 }
 
@@ -272,10 +279,37 @@ void MainWindow::onCurrentRowChanged(int currentRow)
 
 void MainWindow::on_action_wav_to_mp3_triggered()
 {
-        qDebug("Opening Converter");
+        qDebug("Opening Converter .wav to .mp3");
         Converter *newconverter = new Converter(this);
         newconverter->setWindowIcon(QIcon("music.ico"));
-        newconverter->setWindowTitle("Music Files Converter");
+        newconverter->setWindowTitle("Convert .wav to .mp3");
         newconverter->show();
+}
+
+
+void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
+{
+    ui->selectedTitleLabel->setText(item->text());
+}
+
+
+void MainWindow::on_actionAbout_triggered()
+{
+    qDebug("Opening about");
+    about *newabout = new about(this);
+    newabout->setWindowIcon(QIcon("music.ico"));
+    newabout->setWindowTitle("About Music Center");
+    newabout->show();
+}
+
+
+void MainWindow::on_action_wav_to_ogg_triggered()
+{
+    qDebug("Opening Converter .wav to .ogg");
+    converterWavOgg *convWavOgg = new converterWavOgg(this);
+    convWavOgg->setWindowIcon(QIcon("music.ico"));
+    convWavOgg->setWindowTitle("Convert .wav to .ogg");
+    convWavOgg->show();
+
 }
 
