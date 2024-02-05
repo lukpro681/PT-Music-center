@@ -24,7 +24,6 @@ private slots:
 
 private:
     Ui::converterWavOgg *ui;
-    bool convertWavToOgg(const QString& wavFilePath, const QString& oggFilePath);
 };
 
 #endif // CONVERTERWAVOGG_H

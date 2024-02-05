@@ -34,8 +34,6 @@ FORMS += \
 INCLUDEPATH += $$PWD/lib/include
 LIBS += -L$$PWD/lib/lib
 
-INCLUDEPATH += $$PWD/ogglib/include
-LIBS += -L$$PWD/ogglib/lib
 
 TRANSLATIONS += \
     MusicCenter_pl_PL.ts
