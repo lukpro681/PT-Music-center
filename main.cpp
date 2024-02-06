@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     a.setApplicationDisplayName("Music Center");
     a.setApplicationName("Music Center");
-    a.setApplicationVersion("0.1.1");
+    a.setApplicationVersion("0.3");
     a.setWindowIcon(QIcon("music.icon"));
     a.setProperty("Authors", authors);
     a.setProperty("Disclaimer", disclaimer);
