@@ -52,3 +52,5 @@ DISTFILES += \
     music.png
 
 win32: LIBS += -luser32 -lkernel32
+
+win32: RC_ICONS += music.ico
