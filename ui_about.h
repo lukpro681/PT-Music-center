@@ -38,9 +38,9 @@ public:
     {
         if (about->objectName().isEmpty())
             about->setObjectName(QString::fromUtf8("about"));
-        about->resize(461, 473);
+        about->resize(513, 576);
         about->setMinimumSize(QSize(461, 473));
-        about->setMaximumSize(QSize(461, 473));
+        about->setMaximumSize(QSize(16777215, 16777215));
         gridLayout_2 = new QGridLayout(about);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout = new QGridLayout();

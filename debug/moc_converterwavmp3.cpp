@@ -21,108 +21,74 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_Converter_t {
-    QByteArrayData data[5];
-    char stringdata0[85];
+struct qt_meta_stringdata_ConverterWavMp3_t {
+    QByteArrayData data[1];
+    char stringdata0[16];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Converter_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_ConverterWavMp3_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_Converter_t qt_meta_stringdata_Converter = {
+static const qt_meta_stringdata_ConverterWavMp3_t qt_meta_stringdata_ConverterWavMp3 = {
     {
-QT_MOC_LITERAL(0, 0, 9), // "Converter"
-QT_MOC_LITERAL(1, 10, 24), // "on_convertButton_clicked"
-QT_MOC_LITERAL(2, 35, 0), // ""
-QT_MOC_LITERAL(3, 36, 24), // "on_addFileButton_clicked"
-QT_MOC_LITERAL(4, 61, 23) // "on_cancelButton_clicked"
+QT_MOC_LITERAL(0, 0, 15) // "ConverterWavMp3"
 
     },
-    "Converter\0on_convertButton_clicked\0\0"
-    "on_addFileButton_clicked\0"
-    "on_cancelButton_clicked"
+    "ConverterWavMp3"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Converter[] = {
+static const uint qt_meta_data_ConverterWavMp3[] = {
 
  // content:
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       0,    0, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
        0,       // signalCount
 
- // slots: name, argc, parameters, tag, flags
-       1,    0,   29,    2, 0x08 /* Private */,
-       3,    0,   30,    2, 0x08 /* Private */,
-       4,    0,   31,    2, 0x08 /* Private */,
-
- // slots: parameters
-    QMetaType::Void,
-    QMetaType::Void,
-    QMetaType::Void,
-
        0        // eod
 };
 
-void Converter::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void ConverterWavMp3::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<Converter *>(_o);
-        Q_UNUSED(_t)
-        switch (_id) {
-        case 0: _t->on_convertButton_clicked(); break;
-        case 1: _t->on_addFileButton_clicked(); break;
-        case 2: _t->on_cancelButton_clicked(); break;
-        default: ;
-        }
-    }
+    Q_UNUSED(_o);
+    Q_UNUSED(_id);
+    Q_UNUSED(_c);
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject Converter::staticMetaObject = { {
-    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_Converter.data,
-    qt_meta_data_Converter,
+QT_INIT_METAOBJECT const QMetaObject ConverterWavMp3::staticMetaObject = { {
+    QMetaObject::SuperData::link<ConverterBase::staticMetaObject>(),
+    qt_meta_stringdata_ConverterWavMp3.data,
+    qt_meta_data_ConverterWavMp3,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *Converter::metaObject() const
+const QMetaObject *ConverterWavMp3::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Converter::qt_metacast(const char *_clname)
+void *ConverterWavMp3::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_Converter.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_ConverterWavMp3.stringdata0))
         return static_cast<void*>(this);
-    return QDialog::qt_metacast(_clname);
+    return ConverterBase::qt_metacast(_clname);
 }
 
-int Converter::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int ConverterWavMp3::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QDialog::qt_metacall(_c, _id, _a);
-    if (_id < 0)
-        return _id;
-    if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
-            qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
-    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 3)
-            *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 3;
-    }
+    _id = ConverterBase::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

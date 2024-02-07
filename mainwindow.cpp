@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "wsettings.h"
+#include "converterbase.h"
 #include "converterwavmp3.h"
 #include "converterwavogg.h"
 #include "about.h"
@@ -52,6 +53,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::onPlayerCurrentMediaChanged(const QMediaContent &media)
 {
+    if(!ui->ShuffleButton->isChecked())
+    {
     // Sprawdzenie, czy aktualne medium nie jest puste
     if (!media.isNull()) {
         // Pobranie indeksu aktualnie odtwarzanego utworu
@@ -60,6 +63,7 @@ void MainWindow::onPlayerCurrentMediaChanged(const QMediaContent &media)
             // Zaznaczenie kolejnego indeksu w kontrolce listWidget
             ui->listWidget->setCurrentRow(currentIndex);
         }
+    }
     }
 }
 
@@ -109,10 +113,8 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
     qDebug("DOUBLE CLICK");
     playlist->setCurrentIndex(ui->listWidget->row(item));
     updateCurrentTrackTitle();
-    //ui->titleLabel->setText(ui->listWidget->item(playlist->currentIndex())->text());
     player->play();
     state = 1;
-    //onCurrentRowChanged(ui->listWidget->row(item));
 
 
 }
@@ -190,9 +192,21 @@ void MainWindow::on_ShuffleButton_toggled(bool checked)
     if (checked) {
 
         playlist->shuffle();
+        ui->titleLabel->setText(tr("Random Playing"));
 
+            ui->NextButton->setDisabled(true);
+            ui->PrevButton->setDisabled(true);
+            ui->playButton->setDisabled(true);
+            ui->RepeatButton->setDisabled(true);
+            ui->stopButton->setDisabled(true);
+
+        player->play();
     } else {
-
+        ui->NextButton->setDisabled(false);
+        ui->PrevButton->setDisabled(false);
+        ui->playButton->setDisabled(false);
+        ui->RepeatButton->setDisabled(false);
+        ui->stopButton->setDisabled(false);
         // Wyłącz tryb losowego odtwarzania
         playlist->setPlaybackMode(QMediaPlaylist::Sequential);
 
@@ -207,8 +221,6 @@ void MainWindow::on_ShuffleButton_toggled(bool checked)
 
         // Rozpocznij odtwarzanie od oryginalnego indeksu
         playlist->setCurrentIndex(originalIndex);
-      //  playlist->setCurrentIndex(0);
-       // player->play();
     }
 }
 
@@ -275,19 +287,6 @@ void MainWindow::onCurrentRowChanged(int currentRow)
 }
 
 
-
-void MainWindow::on_action_wav_to_mp3_triggered()
-{
-        qDebug("Opening Converter .wav to .mp3");
-        Converter *newconverter = new Converter(this);
-        newconverter->setWindowIcon(QIcon("music.ico"));
-        newconverter->setWindowTitle("Convert .wav to .mp3");
-        newconverter->show();
-}
-
-
-
-
 void MainWindow::on_actionAbout_triggered()
 {
     qDebug("Opening about");
@@ -298,23 +297,21 @@ void MainWindow::on_actionAbout_triggered()
 }
 
 
+
 void MainWindow::on_action_wav_to_ogg_triggered()
 {
-    qDebug("Opening Converter .wav to .ogg");
-    converterWavOgg *convWavOgg = new converterWavOgg(this);
-    convWavOgg->setWindowIcon(QIcon("music.ico"));
-    convWavOgg->setWindowTitle("Convert .wav to .ogg");
-    convWavOgg->show();
-
+    ConverterBase *converter = new ConverterWavOgg(this);
+    converter->setWindowIcon(QIcon("music.ico"));
+    converter->setWindowTitle(tr(".wav to .ogg converter"));
+    converter->exec();
 }
 
 
-
-
-
-
-void MainWindow::on_actionConverter_triggered()
+void MainWindow::on_action_wav_to_mp3_triggered()
 {
-
+    ConverterBase *converter = new ConverterWavMp3(this);
+    converter->setWindowIcon(QIcon("music.ico"));
+    converter->setWindowTitle(tr(".wav to .mp3 converter"));
+    converter->exec();
 }
 

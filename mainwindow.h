@@ -65,11 +65,6 @@ private slots:
 
     void on_action_wav_to_ogg_triggered();
 
-
-
-
-    void on_actionConverter_triggered();
-
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;

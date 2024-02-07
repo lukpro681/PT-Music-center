@@ -37,7 +37,6 @@ public:
     QAction *actionAbout;
     QAction *action_wav_to_mp3;
     QAction *action_wav_to_ogg;
-    QAction *actionConverter;
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QFormLayout *formLayout;
@@ -75,8 +74,6 @@ public:
         action_wav_to_mp3->setObjectName(QString::fromUtf8("action_wav_to_mp3"));
         action_wav_to_ogg = new QAction(MainWindow);
         action_wav_to_ogg->setObjectName(QString::fromUtf8("action_wav_to_ogg"));
-        actionConverter = new QAction(MainWindow);
-        actionConverter->setObjectName(QString::fromUtf8("actionConverter"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout = new QGridLayout(centralwidget);
@@ -172,7 +169,6 @@ public:
         menuGeneral->addAction(actionAbout);
         menuConvert->addAction(action_wav_to_mp3);
         menuConvert->addAction(action_wav_to_ogg);
-        menuConvert->addAction(actionConverter);
 
         retranslateUi(MainWindow);
 
@@ -186,7 +182,6 @@ public:
         actionAbout->setText(QCoreApplication::translate("MainWindow", "About", nullptr));
         action_wav_to_mp3->setText(QCoreApplication::translate("MainWindow", ".wav to .mp3", nullptr));
         action_wav_to_ogg->setText(QCoreApplication::translate("MainWindow", ".wav to .ogg", nullptr));
-        actionConverter->setText(QCoreApplication::translate("MainWindow", "Converter", nullptr));
         infoLabelPlaying->setText(QCoreApplication::translate("MainWindow", "Playing:", nullptr));
         titleLabel->setText(QString());
         ShuffleButton->setText(QCoreApplication::translate("MainWindow", "Shuffle", nullptr));

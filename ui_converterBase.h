@@ -1,5 +1,5 @@
 /********************************************************************************
-** Form generated from reading UI file 'converterBase.ui'
+** Form generated from reading UI file 'converterbase.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.15.2
 **
@@ -12,33 +12,68 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Converter
+class Ui_ConverterBase
 {
 public:
+    QGridLayout *gridLayout;
+    QPushButton *convertButton;
+    QTextEdit *fileTextEdit;
+    QPushButton *cancelButton;
+    QPushButton *addFileButton;
 
-    void setupUi(QDialog *Converter)
+    void setupUi(QDialog *ConverterBase)
     {
-        if (Converter->objectName().isEmpty())
-            Converter->setObjectName(QString::fromUtf8("Converter"));
-        Converter->resize(400, 300);
+        if (ConverterBase->objectName().isEmpty())
+            ConverterBase->setObjectName(QString::fromUtf8("ConverterBase"));
+        ConverterBase->resize(386, 148);
+        ConverterBase->setMinimumSize(QSize(386, 148));
+        ConverterBase->setMaximumSize(QSize(386, 148));
+        gridLayout = new QGridLayout(ConverterBase);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        convertButton = new QPushButton(ConverterBase);
+        convertButton->setObjectName(QString::fromUtf8("convertButton"));
 
-        retranslateUi(Converter);
+        gridLayout->addWidget(convertButton, 2, 1, 1, 1);
 
-        QMetaObject::connectSlotsByName(Converter);
+        fileTextEdit = new QTextEdit(ConverterBase);
+        fileTextEdit->setObjectName(QString::fromUtf8("fileTextEdit"));
+
+        gridLayout->addWidget(fileTextEdit, 1, 0, 1, 2);
+
+        cancelButton = new QPushButton(ConverterBase);
+        cancelButton->setObjectName(QString::fromUtf8("cancelButton"));
+
+        gridLayout->addWidget(cancelButton, 2, 0, 1, 1);
+
+        addFileButton = new QPushButton(ConverterBase);
+        addFileButton->setObjectName(QString::fromUtf8("addFileButton"));
+
+        gridLayout->addWidget(addFileButton, 0, 0, 1, 2);
+
+
+        retranslateUi(ConverterBase);
+
+        QMetaObject::connectSlotsByName(ConverterBase);
     } // setupUi
 
-    void retranslateUi(QDialog *Converter)
+    void retranslateUi(QDialog *ConverterBase)
     {
-        Converter->setWindowTitle(QCoreApplication::translate("Converter", "Dialog", nullptr));
+        ConverterBase->setWindowTitle(QCoreApplication::translate("ConverterBase", "Dialog", nullptr));
+        convertButton->setText(QCoreApplication::translate("ConverterBase", "Convert", nullptr));
+        cancelButton->setText(QCoreApplication::translate("ConverterBase", "Cancel", nullptr));
+        addFileButton->setText(QCoreApplication::translate("ConverterBase", "Choose .wav file", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Converter: public Ui_Converter {};
+    class ConverterBase: public Ui_ConverterBase {};
 } // namespace Ui
 
 QT_END_NAMESPACE

@@ -1,69 +1,40 @@
 #include "converterwavogg.h"
-#include "ui_converterwavogg.h"
-#include <QFileDialog>
-#include <QMessageBox>
 #include <QProcess>
 
-
-converterWavOgg::converterWavOgg(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::converterWavOgg)
+ConverterWavOgg::ConverterWavOgg(QWidget *parent) :
+    ConverterBase(parent)
 {
-    ui->setupUi(this);
+
 }
 
-converterWavOgg::~converterWavOgg()
+ConverterWavOgg::~ConverterWavOgg()
 {
-    delete ui;
+
 }
 
-void converterWavOgg::on_addFileButton_clicked()
+void ConverterWavOgg::convert()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Select WAV File", QString(), "WAV Files (*.wav)");
-    if (!filePath.isEmpty()) {
-        ui->fileTextEdit->setText(filePath);
-    }
-}
+    qDebug("Convert to OGG");
+    QString inputFilePath = getInputFilePath();
+    QString outputFilePath = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::homePath(), tr("OGG Vorbis Files (*.ogg)"));
 
-void converterWavOgg::on_cancelButton_clicked()
-{
-    this->close();
-}
-
-void converterWavOgg::on_convertButton_clicked()
-{
-    try {
-    QString wavFilePath = ui->fileTextEdit->toPlainText();
-    if (wavFilePath.isEmpty()) {
-        QMessageBox::warning(this, "Error", "Please select a WAV file.");
-        return;
-    }
-    QString outputFilePath = QFileDialog::getSaveFileName(this, "Save OGG File", QDir::homePath(), "Vorbis Files (*.ogg)");
-    if(!outputFilePath.isEmpty()) {
+    if (!inputFilePath.isEmpty() && !outputFilePath.isEmpty()) {
         QProcess process;
         QStringList arguments;
-        arguments << "-b" << "500"; //Bit rate 500kbps
+        arguments << "-b" << "500"; // Set bit rate to 500kbps
         arguments << "-o" << outputFilePath;
-        arguments << wavFilePath;
+        arguments << inputFilePath;
 
         process.start("oggenc2", arguments);
         if (!process.waitForStarted())
-            throw QString("Error: Failed to start conversion process.");
+            throw QString(tr("Error: Failed to start conversion process."));
 
         if (!process.waitForFinished(-1))
-            throw QString("Error: Conversion process timed out.");
+            throw QString(tr("Error: Conversion process timed out."));
 
         if (process.exitCode() != 0)
-            throw QString("Error: Failed to convert file.");
-
-        QMessageBox::information(this, "Conversion Successful", "File converted successfully!");
+            throw QString(tr("Error: Failed to convert file."));
     } else {
-        throw QString("Error: Please select both input and output files!");
+        throw QString(tr("Error: Please select both input and output files!"));
     }
-} catch (const QString &errorMessage) {
-    QMessageBox::critical(this, "Error", errorMessage);
 }
-}
-
-
-

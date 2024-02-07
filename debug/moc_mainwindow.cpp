@@ -147,7 +147,6 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->on_action_wav_to_mp3_triggered(); break;
         case 13: _t->on_actionAbout_triggered(); break;
         case 14: _t->on_action_wav_to_ogg_triggered(); break;
-        case 15: _t->on_actionConverter_triggered(); break;
         default: ;
         }
     }

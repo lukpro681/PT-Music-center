@@ -134,7 +134,6 @@
     </property>
     <addaction name="action_wav_to_mp3"/>
     <addaction name="action_wav_to_ogg"/>
-    <addaction name="actionConverter"/>
    </widget>
    <addaction name="menuGeneral"/>
    <addaction name="menuConvert"/>
@@ -158,11 +157,6 @@
   <action name="action_wav_to_ogg">
    <property name="text">
     <string>.wav to .ogg</string>
-   </property>
-  </action>
-  <action name="actionConverter">
-   <property name="text">
-    <string>Converter</string>
    </property>
   </action>
  </widget>

@@ -4,25 +4,139 @@
 <context>
     <name>Converter</name>
     <message>
-        <location filename="converterBase.ui" line="14"/>
-        <location filename="converterwavmp3.ui" line="26"/>
         <source>Dialog</source>
-        <translation type="unfinished">Ustawienia</translation>
+        <translation type="obsolete">Ustawienia</translation>
     </message>
     <message>
-        <location filename="converterwavmp3.ui" line="32"/>
         <source>Choose .wav file</source>
-        <translation>Wybierz plik .wav</translation>
+        <translation type="vanished">Wybierz plik .wav</translation>
     </message>
     <message>
-        <location filename="converterwavmp3.ui" line="42"/>
+        <source>Cancel</source>
+        <translation type="vanished">Anuluj</translation>
+    </message>
+    <message>
+        <source>Convert to .mp3</source>
+        <translation type="vanished">Konwertuj na .mp3</translation>
+    </message>
+</context>
+<context>
+    <name>ConverterBase</name>
+    <message>
+        <location filename="converterbase.ui" line="26"/>
+        <source>Dialog</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="converterbase.ui" line="32"/>
+        <source>Convert</source>
+        <translation>Konwertuj</translation>
+    </message>
+    <message>
+        <location filename="converterbase.ui" line="42"/>
         <source>Cancel</source>
         <translation>Anuluj</translation>
     </message>
     <message>
-        <location filename="converterwavmp3.ui" line="49"/>
-        <source>Convert to .mp3</source>
-        <translation>Konwertuj na .mp3</translation>
+        <location filename="converterbase.ui" line="49"/>
+        <source>Choose .wav file</source>
+        <translation>Wybierz plik .wav</translation>
+    </message>
+    <message>
+        <location filename="converterbase.cpp" line="25"/>
+        <source>Conversion Successful</source>
+        <translation>Konwersja udana</translation>
+    </message>
+    <message>
+        <location filename="converterbase.cpp" line="25"/>
+        <source>File converted successfully!</source>
+        <translation>Plik został skonwertowany pomyślnie</translation>
+    </message>
+    <message>
+        <location filename="converterbase.cpp" line="27"/>
+        <source>Error: Please select both input and output files!</source>
+        <translation>Błąd: musisz wskazać plik wejściowy oraz wyjściowy</translation>
+    </message>
+    <message>
+        <location filename="converterbase.cpp" line="30"/>
+        <source>Error</source>
+        <translation>Błąd</translation>
+    </message>
+    <message>
+        <location filename="converterbase.cpp" line="36"/>
+        <source>Open File</source>
+        <translation>Otwórz plik</translation>
+    </message>
+    <message>
+        <location filename="converterbase.cpp" line="36"/>
+        <source>.WAV Files (*.wav)</source>
+        <translation>Pliki .wav (*.wav)</translation>
+    </message>
+</context>
+<context>
+    <name>ConverterWavMp3</name>
+    <message>
+        <location filename="converterwavmp3.cpp" line="19"/>
+        <source>Save File</source>
+        <translation>Zapisz plik</translation>
+    </message>
+    <message>
+        <location filename="converterwavmp3.cpp" line="19"/>
+        <source>MP3 Files (*.mp3)</source>
+        <translation>Pliki MP3 (*.mp3)</translation>
+    </message>
+    <message>
+        <location filename="converterwavmp3.cpp" line="30"/>
+        <source>Error: Failed to start conversion process.</source>
+        <translation>Błąd: Nie udało się zainicjować operacji konwersji</translation>
+    </message>
+    <message>
+        <location filename="converterwavmp3.cpp" line="33"/>
+        <source>Error: Conversion process timed out.</source>
+        <translation>Błąd: Przekroczono limit czasu operacji</translation>
+    </message>
+    <message>
+        <location filename="converterwavmp3.cpp" line="36"/>
+        <source>Error: Failed to convert file.</source>
+        <translation>Błąd: nie udało się przekonwertować pliku</translation>
+    </message>
+    <message>
+        <location filename="converterwavmp3.cpp" line="38"/>
+        <source>Error: Please select both input and output files!</source>
+        <translation>Błąd: musisz podać plik wejściowy oraz wyjściowy</translation>
+    </message>
+</context>
+<context>
+    <name>ConverterWavOgg</name>
+    <message>
+        <location filename="converterwavogg.cpp" line="19"/>
+        <source>Save File</source>
+        <translation>Zapisz plik</translation>
+    </message>
+    <message>
+        <location filename="converterwavogg.cpp" line="19"/>
+        <source>OGG Vorbis Files (*.ogg)</source>
+        <translation>Pliki OGG Vorbis (*.ogg)</translation>
+    </message>
+    <message>
+        <location filename="converterwavogg.cpp" line="30"/>
+        <source>Error: Failed to start conversion process.</source>
+        <translation>Błąd: Nie udało się zainicjować operacji konwersji</translation>
+    </message>
+    <message>
+        <location filename="converterwavogg.cpp" line="33"/>
+        <source>Error: Conversion process timed out.</source>
+        <translation>Błąd: Przekroczono limit czasu operacji</translation>
+    </message>
+    <message>
+        <location filename="converterwavogg.cpp" line="36"/>
+        <source>Error: Failed to convert file.</source>
+        <translation>Błąd: nie udało się przekonwertować pliku</translation>
+    </message>
+    <message>
+        <location filename="converterwavogg.cpp" line="38"/>
+        <source>Error: Please select both input and output files!</source>
+        <translation>Błąd: musisz podać plik wejściowy oraz wyjściowy</translation>
     </message>
 </context>
 <context>
@@ -73,19 +187,18 @@
         <translation>Dodaj Folder</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="155"/>
+        <location filename="mainwindow.ui" line="154"/>
         <source>.wav to .mp3</source>
-        <translation type="unfinished"></translation>
+        <translation>konwersja .wav do .mp3</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="160"/>
+        <location filename="mainwindow.ui" line="159"/>
         <source>.wav to .ogg</source>
-        <translation type="unfinished"></translation>
+        <translation>konwersja .wav do .ogg</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="165"/>
         <source>Converter</source>
-        <translation>Konwerter plików dźwiękowych</translation>
+        <translation type="vanished">Konwerter plików dźwiękowych</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="99"/>
@@ -103,19 +216,34 @@
         <translation>Narzędzia</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="145"/>
+        <location filename="mainwindow.ui" line="144"/>
         <source>Settings</source>
         <translation>Ustawienia</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="150"/>
+        <location filename="mainwindow.ui" line="149"/>
         <source>About</source>
         <translation>O Aplikacji</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="101"/>
+        <location filename="mainwindow.cpp" line="105"/>
         <source>Select Music Folder</source>
         <translation>Wybierz folder</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="195"/>
+        <source>Random Playing</source>
+        <translation>Odtwarzanie losowe</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="305"/>
+        <source>.wav to .ogg converter</source>
+        <translation>Konwerter plików .wav do .ogg</translation>
+    </message>
+    <message>
+        <location filename="mainwindow.cpp" line="314"/>
+        <source>.wav to .mp3 converter</source>
+        <translation>Konwerter plików .wav do .mp3</translation>
     </message>
 </context>
 <context>
@@ -207,24 +335,16 @@
 <context>
     <name>converterWavOgg</name>
     <message>
-        <location filename="converterwavogg.ui" line="26"/>
         <source>Dialog</source>
-        <translation>Konwertuj na plik .ogg</translation>
+        <translation type="vanished">Konwertuj na plik .ogg</translation>
     </message>
     <message>
-        <location filename="converterwavogg.ui" line="32"/>
         <source>Choose .wav file</source>
-        <translation>Dodaj plik .wav</translation>
+        <translation type="vanished">Dodaj plik .wav</translation>
     </message>
     <message>
-        <location filename="converterwavogg.ui" line="42"/>
         <source>Cancel</source>
-        <translation>Anuluj</translation>
-    </message>
-    <message>
-        <location filename="converterwavogg.ui" line="49"/>
-        <source>Convert to .ogg</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">Anuluj</translation>
     </message>
 </context>
 </TS>

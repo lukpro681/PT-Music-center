@@ -1,5 +1,5 @@
 release/about.o
-release/converterBase.o
+release/converterbase.o
 release/converterwavmp3.o
 release/converterwavogg.o
 release/main.o
@@ -7,6 +7,7 @@ release/mainwindow.o
 release/wsettings.o
 release/qrc_qmake_qmake_qm_files.o
 release/moc_about.o
+release/moc_converterbase.o
 release/moc_converterwavmp3.o
 release/moc_converterwavogg.o
 release/moc_mainwindow.o

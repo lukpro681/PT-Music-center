@@ -1,30 +1,24 @@
 #ifndef CONVERTERWAVMP3_H
 #define CONVERTERWAVMP3_H
 
-#include <QDialog>
-#include <QFileDialog>
-#include <QMessageBox>
+#include "converterbase.h"
 
 namespace Ui {
-class Converter;
+class ConverterWavMp3;
 }
 
-class Converter : public QDialog
+class ConverterWavMp3 : public ConverterBase
 {
     Q_OBJECT
 
 public:
-    explicit Converter(QWidget *parent = nullptr);
-    ~Converter();
+    explicit ConverterWavMp3(QWidget *parent = nullptr);
+    ~ConverterWavMp3();
 
-private slots:
-    void on_convertButton_clicked();
-    void on_addFileButton_clicked();
-
-    void on_cancelButton_clicked();
+    void convert() override;
 
 private:
-    Ui::Converter *ui;
+    Ui::ConverterWavMp3 *ui;
 };
 
 #endif // CONVERTERWAVMP3_H

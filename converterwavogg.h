@@ -1,29 +1,24 @@
 #ifndef CONVERTERWAVOGG_H
 #define CONVERTERWAVOGG_H
 
-#include <QDialog>
+#include "converterbase.h"
 
 namespace Ui {
-class converterWavOgg;
+class ConverterWavOgg;
 }
 
-class converterWavOgg : public QDialog
+class ConverterWavOgg : public ConverterBase
 {
     Q_OBJECT
 
 public:
-    explicit converterWavOgg(QWidget *parent = nullptr);
-    ~converterWavOgg();
+    explicit ConverterWavOgg(QWidget *parent = nullptr);
+    ~ConverterWavOgg();
 
-private slots:
-    void on_addFileButton_clicked();
-
-    void on_cancelButton_clicked();
-
-    void on_convertButton_clicked();
+    void convert() override;
 
 private:
-    Ui::converterWavOgg *ui;
+    Ui::ConverterWavOgg *ui;
 };
 
 #endif // CONVERTERWAVOGG_H
