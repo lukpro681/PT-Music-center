@@ -27,22 +27,22 @@ MainWindow::MainWindow(QWidget *parent)
 
     player->setPlaylist(playlist);
 
-    connect(player, &QMediaPlayer::positionChanged, this, [&](qint64 position){
+    connect(player, &QMediaPlayer::positionChanged, this, [&](qint64 position){     //connect odpowiedzialny za dynamiczne nadawanie wartości w kontrolce positionSlider
         ui->positionSlider->setValue(position);
     });
 
-    connect(player, &QMediaPlayer::durationChanged, this, [&](qint64 duration){
+    connect(player, &QMediaPlayer::durationChanged, this, [&](qint64 duration){     //connect odpowiedzialny za zmianę długości slidera w zależności od długości utworu
         ui->positionSlider->setRange(0, duration);
     });
 
-    connect(ui->RepeatButton, &QAbstractButton::toggled, this, &MainWindow::on_RepeatButton_toggled);
-     loadSettings();
+    connect(ui->RepeatButton, &QAbstractButton::toggled, this, &MainWindow::on_RepeatButton_toggled);   //connect odpowiedzialny za powtarzanie utworu w pętli
+     loadSettings();    //Załadowanie danych z pliku settings.json
 
-    connect(&settingsDialog, &Wsettings::settingsApplied, this, &MainWindow::updatePlaylist);
+    connect(&settingsDialog, &Wsettings::settingsApplied, this, &MainWindow::updatePlaylist);   //connect odpowiedzialny za zapisanie ustawień w oknie settings
 
-    connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentRowChanged(int)));
-
-     connect(player, &QMediaPlayer::currentMediaChanged, this, &MainWindow::onPlayerCurrentMediaChanged);
+    connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentRowChanged(int)));          //
+                                                                                                            //connecty odpowiedzialne za zmianę nazwy aktualnie
+     connect(player, &QMediaPlayer::currentMediaChanged, this, &MainWindow::onPlayerCurrentMediaChanged);   //odtwarzanego utworu w kontrolce titleLabel
 
 }
 
@@ -51,7 +51,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::onPlayerCurrentMediaChanged(const QMediaContent &media)
+void MainWindow::onPlayerCurrentMediaChanged(const QMediaContent &media)    //slot odpowiedzialny za zmianę nazwy aktualnie odtwarzanego utworu w kontrolce titleLabel
 {
     if(!ui->ShuffleButton->isChecked())
     {
@@ -68,16 +68,16 @@ void MainWindow::onPlayerCurrentMediaChanged(const QMediaContent &media)
 }
 
 
-void MainWindow::on_playButton_clicked()
+void MainWindow::on_playButton_clicked() //slot odpowiedzialny za przycisk odtwarzający oraz pauzujący utwór
 {
-    if(state == 1){
+    if(state == 1){     //pauza
         qDebug("PAUSE");
         player->pause();
         state = 0;
     }
 
     else{
-    qDebug("PLAY");
+    qDebug("PLAY");     //odtwarzaj
         if (playlist->currentIndex() < 0) {
         playlist->setCurrentIndex(0); }
         else {
@@ -90,7 +90,7 @@ void MainWindow::on_playButton_clicked()
 
 }
 
-void MainWindow::on_stopButton_clicked()
+void MainWindow::on_stopButton_clicked()    //slot odpowiedzialny za całkowite zatrzymanie utworu(timer zeruje się)
 {
         qDebug("STAAAAAAWP");
         ui->titleLabel->clear();
@@ -99,7 +99,7 @@ void MainWindow::on_stopButton_clicked()
 
 }
 
-void MainWindow::on_setFolderButton_clicked()
+void MainWindow::on_setFolderButton_clicked() //wgranie tymczasowego folderu z plikami dźwiękowymi
 {
     qDebug("addFolder");
     QString folderPath = QFileDialog::getExistingDirectory(this, tr("Select Music Folder"));
@@ -108,7 +108,7 @@ void MainWindow::on_setFolderButton_clicked()
     }
 }
 
-void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
+void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item) //wybranie odtwarzanego utworu tzw. doubleclickiem
 {
     qDebug("DOUBLE CLICK");
     playlist->setCurrentIndex(ui->listWidget->row(item));
@@ -119,12 +119,12 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 
 }
 
-void MainWindow::on_positionSlider_sliderMoved(int position)
+void MainWindow::on_positionSlider_sliderMoved(int position) //dynamiczne ustawianie pozycji slidera
 {
     player->setPosition(position);
 }
 
-void MainWindow::populatePlaylist(const QString &path, const QStringList &formats)
+void MainWindow::populatePlaylist(const QString &path, const QStringList &formats) //odczyt plików dźwiękowych i wstawienie do listWidget z pliku konfiguracji json
 {
     qDebug("populatePlaylist");
     QDirIterator it(path, formats, QDir::Files, QDirIterator::Subdirectories);
@@ -136,7 +136,7 @@ void MainWindow::populatePlaylist(const QString &path, const QStringList &format
 
     }
 }
-void MainWindow::on_actionSettings_triggered()
+void MainWindow::on_actionSettings_triggered() //otwiera okno ustwaień
     {
     qDebug("Opening Settings");
     Wsettings *newsettings = new Wsettings(this);
@@ -146,7 +146,7 @@ void MainWindow::on_actionSettings_triggered()
 
 };
 
-    void MainWindow::loadSettings()
+    void MainWindow::loadSettings() //ładowanie ustawień
 {
     qDebug("Loading Settings");
     settingsDialog.loadSettings();
@@ -157,7 +157,7 @@ void MainWindow::on_actionSettings_triggered()
     }
 }
 
-void MainWindow::updatePlaylist()
+void MainWindow::updatePlaylist() //tworzy pętle dla populatePlaylist ,która wywołuje tę funkcję
 {
     qDebug("Updating Playlist");
     playlist->clear();
@@ -170,7 +170,7 @@ void MainWindow::updatePlaylist()
     }
 }
 
-void MainWindow::updateCurrentTrackTitle()
+void MainWindow::updateCurrentTrackTitle()  //aktualizacja nazwy obecnie odtwarzanego utworu w przypadku użycia previous i next
 {
     int currentRow = ui->listWidget->currentRow();
     if(currentRow >= 0 && currentRow < ui->listWidget->count()) {
@@ -180,14 +180,14 @@ void MainWindow::updateCurrentTrackTitle()
 }
 
 
-void MainWindow::on_refreshButton_clicked()
+void MainWindow::on_refreshButton_clicked() // odświerzenie listy utworów
 {
     qDebug("REFRESH");
     updatePlaylist();
 }
 
 
-void MainWindow::on_ShuffleButton_toggled(bool checked)
+void MainWindow::on_ShuffleButton_toggled(bool checked) // odtwarzanie losowe utworów z listy
 {
     if (checked) {
 
@@ -225,7 +225,7 @@ void MainWindow::on_ShuffleButton_toggled(bool checked)
 }
 
 
-void MainWindow::on_RepeatButton_toggled(bool checked)
+void MainWindow::on_RepeatButton_toggled(bool checked) //przycisk do powtarzania obecnego utworu w loopie
 {
     if (checked) {
         // Włącz tryb powtarzania
@@ -249,7 +249,7 @@ void MainWindow::on_RepeatButton_toggled(bool checked)
 }
 
 
-void MainWindow::on_NextButton_clicked()
+void MainWindow::on_NextButton_clicked() //następny utwór
 {
     int nextIndex = playlist->nextIndex();
 
@@ -263,7 +263,7 @@ void MainWindow::on_NextButton_clicked()
 }
 
 
-void MainWindow::on_PrevButton_clicked()
+void MainWindow::on_PrevButton_clicked() //poprzedni utwór
 {
     int prevIndex = playlist->previousIndex();
 
@@ -276,7 +276,7 @@ void MainWindow::on_PrevButton_clicked()
     }
 }
 
-void MainWindow::onCurrentRowChanged(int currentRow)
+void MainWindow::onCurrentRowChanged(int currentRow)    //slot odpowiedzialny za zmianę nazwy aktualnie odtwarzanego utworu w kontrolce titleLabel
 {
         {
         qDebug("AUTO NEXT INDEX");
@@ -287,7 +287,7 @@ void MainWindow::onCurrentRowChanged(int currentRow)
 }
 
 
-void MainWindow::on_actionAbout_triggered()
+void MainWindow::on_actionAbout_triggered() //otwarcie okna z informacjami o aplikacji
 {
     qDebug("Opening about");
     about *newabout = new about(this);
@@ -298,7 +298,7 @@ void MainWindow::on_actionAbout_triggered()
 
 
 
-void MainWindow::on_action_wav_to_ogg_triggered()
+void MainWindow::on_action_wav_to_ogg_triggered()   //otwarcie okna z konwersją z .wav do .ogg
 {
     ConverterBase *converter = new ConverterWavOgg(this);
     converter->setWindowIcon(QIcon("music.ico"));
@@ -307,7 +307,7 @@ void MainWindow::on_action_wav_to_ogg_triggered()
 }
 
 
-void MainWindow::on_action_wav_to_mp3_triggered()
+void MainWindow::on_action_wav_to_mp3_triggered()   //otwarcie okna z konwersją z .wav do .mp3
 {
     ConverterBase *converter = new ConverterWavMp3(this);
     converter->setWindowIcon(QIcon("music.ico"));

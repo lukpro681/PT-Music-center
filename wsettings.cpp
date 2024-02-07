@@ -14,8 +14,8 @@ Wsettings::Wsettings(QWidget *parent) :
 {
     ui->setupUi(this);
     loadSettings();
-     connect(ui->saveSettingsButton, &QPushButton::clicked, this, &Wsettings::on_saveSettingsButton_clicked);
-     connect(ui->okButton, &QPushButton::clicked, this, &Wsettings::on_okButton_clicked);
+     connect(ui->saveSettingsButton, &QPushButton::clicked, this, &Wsettings::on_saveSettingsButton_clicked);   //
+     connect(ui->okButton, &QPushButton::clicked, this, &Wsettings::on_okButton_clicked);                       // connecty odpowiedzialne za zapisanie ustawień
 }
 
 Wsettings::~Wsettings()
@@ -23,7 +23,7 @@ Wsettings::~Wsettings()
     delete ui;
 }
 
-void Wsettings::on_addFolderButton_clicked()
+void Wsettings::on_addFolderButton_clicked()    //dodanie folderu z utworami na stałe
 {
     QString folderPath = QFileDialog::getExistingDirectory(this, tr("Select Folder"));
     if (!folderPath.isEmpty()) {
@@ -31,13 +31,13 @@ void Wsettings::on_addFolderButton_clicked()
     }
 }
 
-void Wsettings::on_saveSettingsButton_clicked()
+void Wsettings::on_saveSettingsButton_clicked()     //zapisanie ustawień(przycisk)
 {
     saveSettings();
     emit settingsApplied();
 }
 
-void Wsettings::loadSettings()
+void Wsettings::loadSettings()      // załadowanie ustawień (zapisywane i odczytywane są w pliku z formatem .json)
 {
     QFile file(settingsFilePath);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -54,7 +54,7 @@ void Wsettings::loadSettings()
     }
 }
 
-void Wsettings::saveSettings()
+void Wsettings::saveSettings()      //zapisanie ustawień
 {
     QJsonObject obj;
     obj["folders"] = ui->folderPathTextEdit->toPlainText();
@@ -69,7 +69,7 @@ void Wsettings::saveSettings()
     }
 }
 
-void Wsettings::on_okButton_clicked()
+void Wsettings::on_okButton_clicked() // zaaplikowanie ustawień
 {
     saveSettings();
     emit settingsApplied();
@@ -82,12 +82,12 @@ void Wsettings::on_cancelButton_clicked()
     this->close();
 }
 
-QStringList Wsettings::getFormats() const
+QStringList Wsettings::getFormats() const   // metody która pobiera format plików z pliku konfiguracji
 {
     return ui->formatsLineEdit->text().split(' ', QString::SkipEmptyParts);
 }
 
-QStringList Wsettings::getFolders() const
+QStringList Wsettings::getFolders() const   // metody która pobiera foldery z pliku konfiguracji
 {
     return ui->folderPathTextEdit->toPlainText().split('\n', QString::SkipEmptyParts);
 }

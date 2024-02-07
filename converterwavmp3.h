@@ -7,7 +7,7 @@ namespace Ui {
 class ConverterWavMp3;
 }
 
-class ConverterWavMp3 : public ConverterBase
+class ConverterWavMp3 : public ConverterBase  //klasa pochodna klasy ConverterBase
 {
     Q_OBJECT
 
@@ -15,7 +15,7 @@ public:
     explicit ConverterWavMp3(QWidget *parent = nullptr);
     ~ConverterWavMp3();
 
-    void convert() override;
+    void convert() override; //override metody wirtualnej z klasy ConverterBase
 
 private:
     Ui::ConverterWavMp3 *ui;

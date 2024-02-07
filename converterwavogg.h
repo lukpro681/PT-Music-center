@@ -7,7 +7,7 @@ namespace Ui {
 class ConverterWavOgg;
 }
 
-class ConverterWavOgg : public ConverterBase
+class ConverterWavOgg : public ConverterBase    //klasa pochodna klasy ConverterBase
 {
     Q_OBJECT
 
@@ -15,7 +15,7 @@ public:
     explicit ConverterWavOgg(QWidget *parent = nullptr);
     ~ConverterWavOgg();
 
-    void convert() override;
+    void convert() override;    //override metody wirtualnej z klasy ConverterBase
 
 private:
     Ui::ConverterWavOgg *ui;

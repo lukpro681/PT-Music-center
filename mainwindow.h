@@ -16,7 +16,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow   //kompozyt w relcji kompozycji z klasami ConverterBase, About oraz Wsettings
 {
     Q_OBJECT
 

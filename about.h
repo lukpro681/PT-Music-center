@@ -8,7 +8,7 @@ namespace Ui {
 class about;
 }
 
-class about : public QDialog
+class about : public QDialog    //komponent w relacji kompozycji z klasą MainWindow
 {
     Q_OBJECT
 
@@ -21,7 +21,7 @@ private slots:
 
 private:
     Ui::about *ui;
-
+    //Pobranie danych z main.cpp przez bibliotekę QApplication
     QString appName = qApp->applicationName();
     QString version = qApp->applicationVersion();
     QString authors = qApp->property("Authors").toString();

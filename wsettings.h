@@ -11,7 +11,7 @@ namespace Ui {
 class Wsettings;
 }
 
-class Wsettings : public QDialog
+class Wsettings : public QDialog    //komponent w relacji kompozycji z klasą MainWindow
 {
     Q_OBJECT
 

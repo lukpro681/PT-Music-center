@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     a.setApplicationVersion("1.0");
     a.setWindowIcon(QIcon("music.icon"));
 
-
+    //fragment odpowiedzialny za tłumaczenie z języka angielskiego na polski dzięki bibliotece QTranslator
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
         }
     }
 
-
+    //licencje programu
     QString programLicense = "This program is open-source and available for everyone under the GNU General Public License";
 
     QString lameLicense = "The decoding functions provided in LAME use a version of the mpglib decoding engine which is under the GPL. They may not be used by any program not released under the GPL unless you obtain such permission from the MPG123 project (www.mpg123.de).";

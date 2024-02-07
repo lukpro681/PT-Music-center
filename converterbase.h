@@ -9,7 +9,7 @@ namespace Ui {
 class ConverterBase;
 }
 
-class ConverterBase : public QDialog
+class ConverterBase : public QDialog        //klasa bazowa do konwersji plików oraz komponent w relacji kompozycji z MainWindow.Jest ona klasą abstrakcyjną
 {
     Q_OBJECT
 
@@ -17,7 +17,7 @@ public:
     explicit ConverterBase(QWidget *parent = nullptr);
     virtual ~ConverterBase();
 
-    virtual void convert() = 0;
+    virtual void convert() = 0; // metoda wirtualna służąca do konwersji
 
 private slots:
     void on_convertButton_clicked();

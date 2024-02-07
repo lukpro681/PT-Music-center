@@ -14,7 +14,7 @@ ConverterBase::~ConverterBase()
     delete ui;
 }
 
-void ConverterBase::on_convertButton_clicked()
+void ConverterBase::on_convertButton_clicked()  //slot klasy ConverterBase służący do rozpoczęcia konwersji pliku wykonując metodę convert()
 {
     try {
         qDebug("starting conversion proccess");
@@ -31,7 +31,7 @@ void ConverterBase::on_convertButton_clicked()
     }
 }
 
-void ConverterBase::on_addFileButton_clicked()
+void ConverterBase::on_addFileButton_clicked()  //slot klasy ConverterBase służący do wskazania pliku który ma być celem konwersji
 {
     QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), QDir::homePath(), tr(".WAV Files (*.wav)"));
 

@@ -11,8 +11,6 @@ about::about(QWidget *parent)
     ui->versionLabel->setText(version);
     ui->authorsLabel->setText(authors);
     ui->disclaimerLabel->setText(disclaimer);
-
-
 }
 
 about::~about()

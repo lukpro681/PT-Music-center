@@ -12,18 +12,18 @@ ConverterWavMp3::~ConverterWavMp3()
 
 }
 
-void ConverterWavMp3::convert()
+void ConverterWavMp3::convert() //metoda odpowiedzialna za konwersję pliku
 {
     qDebug("Convert to MP3");
-    QString inputFilePath = getInputFilePath();
-    QString outputFilePath = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::homePath(), tr("MP3 Files (*.mp3)"));
+    QString inputFilePath = getInputFilePath(); //ścieżka pliku konwertowanego
+    QString outputFilePath = QFileDialog::getSaveFileName(this, tr("Save File"), QDir::homePath(), tr("MP3 Files (*.mp3)"));    //wskazanie ścieżki zapisu nowego pliku po konwersji
 
     if (!inputFilePath.isEmpty() && !outputFilePath.isEmpty()) {
-        QProcess process;
-        QStringList arguments;
-        arguments << "-b" << "320"; // Set bit rate to 320kbps
-        arguments << inputFilePath;
-        arguments << outputFilePath;
+        QProcess process;                                           //{
+        QStringList arguments;                                      //
+        arguments << "-b" << "320"; // Set bit rate to 320kbps      //  ustawienie opcji konwersji(kbps) oraz ścieżki do odczytu oraz zapisu
+        arguments << inputFilePath;                                 //  zawiera argumenty biblioteki LAME
+        arguments << outputFilePath;                                //}
 
         process.start("lame", arguments);
         if (!process.waitForStarted())
