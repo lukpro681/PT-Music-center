@@ -1,5 +1,5 @@
-#ifndef CONVERTER_H
-#define CONVERTER_H
+#ifndef CONVERTERWAVMP3_H
+#define CONVERTERWAVMP3_H
 
 #include <QDialog>
 #include <QFileDialog>
@@ -27,4 +27,4 @@ private:
     Ui::Converter *ui;
 };
 
-#endif // CONVERTER_H
+#endif // CONVERTERWAVMP3_H

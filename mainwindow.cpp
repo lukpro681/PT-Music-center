@@ -2,7 +2,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "wsettings.h"
-#include "converter.h"
+#include "converterwavmp3.h"
 #include "converterwavogg.h"
 #include "about.h"
 #include <QSettings>
@@ -40,12 +40,29 @@ MainWindow::MainWindow(QWidget *parent)
     connect(&settingsDialog, &Wsettings::settingsApplied, this, &MainWindow::updatePlaylist);
 
     connect(ui->listWidget, SIGNAL(currentRowChanged(int)), this, SLOT(onCurrentRowChanged(int)));
+
+     connect(player, &QMediaPlayer::currentMediaChanged, this, &MainWindow::onPlayerCurrentMediaChanged);
+
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::onPlayerCurrentMediaChanged(const QMediaContent &media)
+{
+    // Sprawdzenie, czy aktualne medium nie jest puste
+    if (!media.isNull()) {
+        // Pobranie indeksu aktualnie odtwarzanego utworu
+        int currentIndex = playlist->currentIndex();
+        if (currentIndex >= 0 && currentIndex < ui->listWidget->count()) {
+            // Zaznaczenie kolejnego indeksu w kontrolce listWidget
+            ui->listWidget->setCurrentRow(currentIndex);
+        }
+    }
+}
+
 
 void MainWindow::on_playButton_clicked()
 {
@@ -91,10 +108,11 @@ void MainWindow::on_listWidget_itemDoubleClicked(QListWidgetItem *item)
 {
     qDebug("DOUBLE CLICK");
     playlist->setCurrentIndex(ui->listWidget->row(item));
-    ui->titleLabel->setText(ui->listWidget->item(playlist->currentIndex())->text());
+    updateCurrentTrackTitle();
+    //ui->titleLabel->setText(ui->listWidget->item(playlist->currentIndex())->text());
     player->play();
     state = 1;
-    onCurrentRowChanged(ui->listWidget->row(item));
+    //onCurrentRowChanged(ui->listWidget->row(item));
 
 
 }
@@ -150,6 +168,16 @@ void MainWindow::updatePlaylist()
     }
 }
 
+void MainWindow::updateCurrentTrackTitle()
+{
+    int currentRow = ui->listWidget->currentRow();
+    if(currentRow >= 0 && currentRow < ui->listWidget->count()) {
+        QString filename = ui->listWidget->item(currentRow)->text();
+        ui->titleLabel->setText(filename);
+    }
+}
+
+
 void MainWindow::on_refreshButton_clicked()
 {
     qDebug("REFRESH");
@@ -160,34 +188,6 @@ void MainWindow::on_refreshButton_clicked()
 void MainWindow::on_ShuffleButton_toggled(bool checked)
 {
     if (checked) {
-//        // Włącz tryb losowego odtwarzania
-//        std::random_device rd;
-//        std::mt19937 gen(rd());
-
-//        // Utwórz wektor z indeksami utworów w playliście
-//        QVector<int> indices(playlist->mediaCount());
-//        std::iota(indices.begin(), indices.end(), 0);
-
-//        // Losowo przemieszaj indeksy
-//        std::shuffle(indices.begin(), indices.end(), gen);
-
-//        // Zapisz oryginalny indeks
-//        originalIndex = playlist->currentIndex();
-
-//        // Zatrzymaj odtwarzanie aktualnej playlisty
-//        player->stop();
-
-//        // Utwórz nową playlistę na podstawie przemieszanych indeksów
-//        QMediaPlaylist *shuffledPlaylist = new QMediaPlaylist;
-//        for (int index : indices) {
-//            shuffledPlaylist->addMedia(playlist->media(index));
-//        }
-
-//        // Rozpocznij odtwarzanie od pierwszego utworu na nowej playliście
-//        player->setPlaylist(shuffledPlaylist);
-//        //playlist->setCurrentIndex(0);
-//        ui->titleLabel->setText(ui->listWidget->item(shuffledPlaylist->currentIndex())->text());
-//        player->play();
 
         playlist->shuffle();
 
@@ -266,12 +266,11 @@ void MainWindow::on_PrevButton_clicked()
 
 void MainWindow::onCurrentRowChanged(int currentRow)
 {
-        if (currentRow >= 0 && currentRow < ui->listWidget->count()) {
-            // Pobierz nazwę odtwarzanego pliku
-            QString fileName = ui->listWidget->item(currentRow)->text();
+        {
+        qDebug("AUTO NEXT INDEX");
+            playlist->setCurrentIndex(ui->listWidget->row(ui->listWidget->currentItem()));
+        updateCurrentTrackTitle();
 
-            // Wyświetl nazwę pliku w kontrolce label
-           // ui->titleLabel->setText(fileName);
         }
 }
 
@@ -287,10 +286,6 @@ void MainWindow::on_action_wav_to_mp3_triggered()
 }
 
 
-void MainWindow::on_listWidget_itemClicked(QListWidgetItem *item)
-{
-    ui->selectedTitleLabel->setText(item->text());
-}
 
 
 void MainWindow::on_actionAbout_triggered()
@@ -310,6 +305,16 @@ void MainWindow::on_action_wav_to_ogg_triggered()
     convWavOgg->setWindowIcon(QIcon("music.ico"));
     convWavOgg->setWindowTitle("Convert .wav to .ogg");
     convWavOgg->show();
+
+}
+
+
+
+
+
+
+void MainWindow::on_actionConverter_triggered()
+{
 
 }
 

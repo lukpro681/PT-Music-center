@@ -10,7 +10,8 @@ CONFIG += c++17
 
 SOURCES += \
     about.cpp \
-    converter.cpp \
+    converterBase.cpp \
+    converterwavmp3.cpp \
     converterwavogg.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,14 +19,16 @@ SOURCES += \
 
 HEADERS += \
     about.h \
-    converter.h \
+    converterBase.h \
+    converterwavmp3.h \
     converterwavogg.h \
     mainwindow.h \
     wsettings.h
 
 FORMS += \
     about.ui \
-    converter.ui \
+    converterBase.ui \
+    converterwavmp3.ui \
     converterwavogg.ui \
     mainwindow.ui \
     wsettings.ui

@@ -9,6 +9,7 @@
 #include <QDirIterator>
 #include <QListWidgetItem>
 #include <QList>
+#include <QTimer>
 #include "wsettings.h"
 
 namespace Ui {
@@ -28,8 +29,14 @@ public:
     void updatePlaylist();
     void defaultsort();
 
+
     bool state;
 
+    void updateCurrentTrackTitle();
+
+
+
+    void onPlayerCurrentMediaChanged(const QMediaContent &media);
 private slots:
     void on_playButton_clicked();
     void on_stopButton_clicked();
@@ -52,11 +59,16 @@ private slots:
 
     void on_action_wav_to_mp3_triggered();
 
-    void on_listWidget_itemClicked(QListWidgetItem *item);
+
 
     void on_actionAbout_triggered();
 
     void on_action_wav_to_ogg_triggered();
+
+
+
+
+    void on_actionConverter_triggered();
 
 private:
     Ui::MainWindow *ui;

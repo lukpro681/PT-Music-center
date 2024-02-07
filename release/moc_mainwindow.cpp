@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[22];
-    char stringdata0[443];
+    QByteArrayData data[23];
+    char stringdata0[477];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,8 +52,9 @@ QT_MOC_LITERAL(16, 308, 21), // "on_PrevButton_clicked"
 QT_MOC_LITERAL(17, 330, 19), // "onCurrentRowChanged"
 QT_MOC_LITERAL(18, 350, 10), // "currentRow"
 QT_MOC_LITERAL(19, 361, 30), // "on_action_wav_to_mp3_triggered"
-QT_MOC_LITERAL(20, 392, 25), // "on_listWidget_itemClicked"
-QT_MOC_LITERAL(21, 418, 24) // "on_actionAbout_triggered"
+QT_MOC_LITERAL(20, 392, 24), // "on_actionAbout_triggered"
+QT_MOC_LITERAL(21, 417, 30), // "on_action_wav_to_ogg_triggered"
+QT_MOC_LITERAL(22, 448, 28) // "on_actionConverter_triggered"
 
     },
     "MainWindow\0on_playButton_clicked\0\0"
@@ -67,8 +68,9 @@ QT_MOC_LITERAL(21, 418, 24) // "on_actionAbout_triggered"
     "on_RepeatButton_toggled\0on_NextButton_clicked\0"
     "on_PrevButton_clicked\0onCurrentRowChanged\0"
     "currentRow\0on_action_wav_to_mp3_triggered\0"
-    "on_listWidget_itemClicked\0"
-    "on_actionAbout_triggered"
+    "on_actionAbout_triggered\0"
+    "on_action_wav_to_ogg_triggered\0"
+    "on_actionConverter_triggered"
 };
 #undef QT_MOC_LITERAL
 
@@ -78,7 +80,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      15,   14, // methods
+      16,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -86,21 +88,22 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   89,    2, 0x08 /* Private */,
-       3,    0,   90,    2, 0x08 /* Private */,
-       4,    0,   91,    2, 0x08 /* Private */,
-       5,    1,   92,    2, 0x08 /* Private */,
-       8,    1,   95,    2, 0x08 /* Private */,
-      10,    0,   98,    2, 0x08 /* Private */,
-      11,    0,   99,    2, 0x08 /* Private */,
-      12,    1,  100,    2, 0x08 /* Private */,
-      14,    1,  103,    2, 0x08 /* Private */,
-      15,    0,  106,    2, 0x08 /* Private */,
-      16,    0,  107,    2, 0x08 /* Private */,
-      17,    1,  108,    2, 0x08 /* Private */,
-      19,    0,  111,    2, 0x08 /* Private */,
-      20,    1,  112,    2, 0x08 /* Private */,
-      21,    0,  115,    2, 0x08 /* Private */,
+       1,    0,   94,    2, 0x08 /* Private */,
+       3,    0,   95,    2, 0x08 /* Private */,
+       4,    0,   96,    2, 0x08 /* Private */,
+       5,    1,   97,    2, 0x08 /* Private */,
+       8,    1,  100,    2, 0x08 /* Private */,
+      10,    0,  103,    2, 0x08 /* Private */,
+      11,    0,  104,    2, 0x08 /* Private */,
+      12,    1,  105,    2, 0x08 /* Private */,
+      14,    1,  108,    2, 0x08 /* Private */,
+      15,    0,  111,    2, 0x08 /* Private */,
+      16,    0,  112,    2, 0x08 /* Private */,
+      17,    1,  113,    2, 0x08 /* Private */,
+      19,    0,  116,    2, 0x08 /* Private */,
+      20,    0,  117,    2, 0x08 /* Private */,
+      21,    0,  118,    2, 0x08 /* Private */,
+      22,    0,  119,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -116,7 +119,8 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::Int,   18,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 6,    7,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -141,8 +145,9 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 10: _t->on_PrevButton_clicked(); break;
         case 11: _t->onCurrentRowChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 12: _t->on_action_wav_to_mp3_triggered(); break;
-        case 13: _t->on_listWidget_itemClicked((*reinterpret_cast< QListWidgetItem*(*)>(_a[1]))); break;
-        case 14: _t->on_actionAbout_triggered(); break;
+        case 13: _t->on_actionAbout_triggered(); break;
+        case 14: _t->on_action_wav_to_ogg_triggered(); break;
+        case 15: _t->on_actionConverter_triggered(); break;
         default: ;
         }
     }
@@ -177,13 +182,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 15)
+        if (_id < 16)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 15;
+        _id -= 16;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 15)
+        if (_id < 16)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 15;
+        _id -= 16;
     }
     return _id;
 }

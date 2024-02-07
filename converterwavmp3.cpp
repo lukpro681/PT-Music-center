@@ -1,5 +1,5 @@
-#include "converter.h"
-#include "ui_converter.h"
+#include "converterwavmp3.h"
+#include "ui_converterwavmp3.h"
 #include <QProcess>
 
 Converter::Converter(QWidget *parent) :

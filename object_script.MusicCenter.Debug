@@ -1,12 +1,13 @@
 debug/about.o
-debug/converter.o
+debug/converterBase.o
+debug/converterwavmp3.o
 debug/converterwavogg.o
 debug/main.o
 debug/mainwindow.o
 debug/wsettings.o
 debug/qrc_qmake_qmake_qm_files.o
 debug/moc_about.o
-debug/moc_converter.o
+debug/moc_converterwavmp3.o
 debug/moc_converterwavogg.o
 debug/moc_mainwindow.o
 debug/moc_wsettings.o
